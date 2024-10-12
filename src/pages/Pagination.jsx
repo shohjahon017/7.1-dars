@@ -3,6 +3,7 @@ import http from "../../axios";
 import ResponsivePagination from "react-responsive-pagination";
 import "react-responsive-pagination/themes/classic.css";
 import { RingLoader } from "react-spinners";
+import Navbar from "../components/Navbar";
 
 function Pagination() {
   const [pages, setPages] = useState(1);
@@ -34,7 +35,8 @@ function Pagination() {
   }
 
   return (
-    <div className="p-6 bg-white rounded-lg ">
+    <div className="p-6 container mx-auto bg-white rounded-lg ">
+      <Navbar></Navbar>
       {loader && (
         <div className=" flex  justify-center">
           <RingLoader></RingLoader>
@@ -54,7 +56,7 @@ function Pagination() {
             <div className=" " key={photo.id}>
               <img
                 className="rounded-lg w-64"
-                src={photo.url || defaultImage}
+                src={photo.url && photo.url !== "" ? photo.url : defaultImage}
               />
             </div>
           ))}
